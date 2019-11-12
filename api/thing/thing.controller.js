@@ -7,22 +7,45 @@ var request = require('request');
 const async = require('async');
 const dlXlsx = require('../../sqldb/dlXlsx');
 const _ = require('lodash');
+const xml2js = require('xml2js').parseString;
 
 
 
 
 
 module.exports.findAll = function (req, res) {
-
-
+    // let xml = '<books><book><id>30892</id><bookName>国编杀手</bookName><ksCategoryId>14</ksCategoryId><ksCategoryPid>3</ksCategoryPid><categoryId>64486</categoryId><categoryPid>64472</categoryPid></book><book><id>46320</id><bookName>洪荒东皇</bookName><ksCategoryId>30</ksCategoryId><ksCategoryPid>2</ksCategoryPid><categoryId>64502</categoryId><categoryPid>64471</categoryPid></book><book><id>73928</id><bookName>剑绝龙泉</bookName><ksCategoryId>19</ksCategoryId><ksCategoryPid>1</ksCategoryPid><categoryId>64491</categoryId><categoryPid>64470</categoryPid></book></books>'
+    // xml2js(xml, function (err, result) {
+    //     console.log(result.books.book[0]);
+    // });
     request('http://hezuo.kanshu.cn/newoffer/booklist.php?cono=100530', function (error, response, body) {
 
         if (!error && response.statusCode == 200) {
-
-            // body = JSON.parse(body);
-            console.log(body);
+            xml2js(body, function (err, result) {
+                console.log(result.books.book[0]);
+                _.map(result.books.book, function (item) {
+                    getBook(item.id[0]);
+                });
+            });
         }
     })
+
+
+    function getBook(book_id) {
+        request('http://hezuo.kanshu.cn/newoffer/getchapterlist.php?cono=100530&bookid=' + book_id + ' ', function (error, response, body) {
+
+            if (!error && response.statusCode == 200) {
+
+                // body = JSON.parse(body);
+                console.log(body);
+                xml2js(body, function (err, result) {
+                    console.log(result);
+                });
+            }
+        })
+    }
+
+
 
 
 
