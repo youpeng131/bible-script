@@ -1,0 +1,12 @@
+node_modules
+public
+.tmp
+.idea
+.history
+client/bower_components
+client/app.html
+/server/config/local.env.js
+npm-debug.log
+coverage
+/server/bible
+

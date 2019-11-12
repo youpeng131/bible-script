@@ -1,0 +1,27 @@
+{
+  "name": "bible-web",
+  "version": "1.0.0",
+  "description": "nodejs express bootstrap view",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "bootstrap",
+    "express"
+  ],
+  "author": "youpeng",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.1.0",
+    "bootstrap-fileinput": "^5.0.6",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-static": "^1.2.6",
+    "lodash": "^4.17.15",
+    "sequelize": "^5.18.1",
+    "sqlite3": "^4.1.0",
+    "xlsx": "^0.15.1"
+  }
+}
