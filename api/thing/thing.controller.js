@@ -22,7 +22,7 @@ module.exports.findAll = function (req, res) {
 
         if (!error && response.statusCode == 200) {
             xml2js(body, function (err, result) {
-                _.map(result.books.book, function (item) {
+                _.map(result.books.book, { explicitArray: false, ignoreAttrs: true }, function (item) {
                     getBook(item.id);
                 });
             });
@@ -36,7 +36,7 @@ module.exports.findAll = function (req, res) {
 
             if (!error && response.statusCode == 200) {
 
-                xml2js(body, function (err, result) {
+                xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
                     _.map(result.chapters.chapter, function (item) {
                         getBookContent(item.chapterId);
                     })
@@ -51,11 +51,11 @@ module.exports.findAll = function (req, res) {
 
             if (!error && response.statusCode == 200) {
 
-                xml2js(body, function (err, result) {
-                    console.log(result.chapters);
-                    // _.map(result.chapters.chapter, function (item) {
-                    //     console.log(item.chapterid, item.content);
-                    // })
+                xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
+                    // console.log(result.chapters);
+                    _.map(result.chapters.chapter, function (item) {
+                        console.log(item.chapterid, item.content);
+                    })
 
                 });
             }
