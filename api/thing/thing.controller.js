@@ -22,9 +22,10 @@ module.exports.findAll = function (req, res) {
 
         if (!error && response.statusCode == 200) {
             xml2js(body, function (err, result) {
-                _.map(result.books.book, { explicitArray: false, ignoreAttrs: true }, function (item) {
-                    getBook(item.id);
-                });
+                getBook(result.books.book[0].id);
+                // _.map(result.books.book, { explicitArray: false, ignoreAttrs: true }, function (item) {
+                //     getBook(item.id);
+                // });
             });
         }
     })
@@ -37,9 +38,10 @@ module.exports.findAll = function (req, res) {
             if (!error && response.statusCode == 200) {
 
                 xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
-                    _.map(result.chapters.chapter, function (item) {
-                        getBookContent(item.chapterId);
-                    })
+                    getBookContent(result.chapters.chapter[0].chapterId);
+                    // _.map(result.chapters.chapter, function (item) {
+                    //     getBookContent(item.chapterId);
+                    // })
                 });
             }
         })
