@@ -21,9 +21,9 @@ module.exports.findAll = function (req, res) {
     request('http://hezuo.kanshu.cn/newoffer/booklist.php?cono=100530', function (error, response, body) {
 
         if (!error && response.statusCode == 200) {
-            xml2js(body, function (err, result) {
+            xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
                 getBook(result.books.book[0].id);
-                // _.map(result.books.book, { explicitArray: false, ignoreAttrs: true }, function (item) {
+                // _.map(result.books.book, function (item) {
                 //     getBook(item.id);
                 // });
             });
