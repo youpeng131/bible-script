@@ -29,7 +29,6 @@ module.exports.findAll = function (req, res) {
         }
     })
 
-    http://<host>/newoffer/getcontent.php
 
 
     function getBook(book_id) {
