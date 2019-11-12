@@ -33,7 +33,7 @@ module.exports.findAll = function (req, res) {
 
 
     function getBook(book_id) {
-        request('http://hezuo.kanshu.cn/newoffer/getchapterlist.php?cono=100530&bookid=' + book_id + ' ', function (error, response, body) {
+        request('http://hezuo.kanshu.cn/newoffer/getchapterlist.php?cono=100530&bookid=' + parseInt(book_id, 10) + ' ', function (error, response, body) {
 
             if (!error && response.statusCode == 200) {
 
@@ -50,7 +50,7 @@ module.exports.findAll = function (req, res) {
 
 
     function getBookContent(chapter_id) {
-        request('http://hezuo.kanshu.cn/newoffer/getcontent.php?cono=100530&chapterid=' + chapter_id + ' ', function (error, response, body) {
+        request('http://hezuo.kanshu.cn/newoffer/getcontent.php?cono=100530&chapterid=' + parseInt(chapter_id, 10) + ' ', function (error, response, body) {
 
             if (!error && response.statusCode == 200) {
 
