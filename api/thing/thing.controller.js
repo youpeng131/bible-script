@@ -38,6 +38,7 @@ module.exports.findAll = function (req, res) {
             if (!error && response.statusCode == 200) {
 
                 xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
+                    console.log(result.chapters.chapter[0]);
                     getBookContent(result.chapters.chapter[0].chapterId);
                     // _.map(result.chapters.chapter, function (item) {
                     //     getBookContent(item.chapterId);
@@ -54,10 +55,10 @@ module.exports.findAll = function (req, res) {
             if (!error && response.statusCode == 200) {
 
                 xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
-                    // console.log(result.chapters);
-                    _.map(result.chapters.chapter, function (item) {
-                        console.log(item.chapterid, item.content);
-                    })
+                    console.log(result.chapters);
+                    // _.map(result.chapters.chapter, function (item) {
+                    //     console.log(item.chapterid, item.content);
+                    // })
 
                 });
             }
