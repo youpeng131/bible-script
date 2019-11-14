@@ -34,7 +34,7 @@ module.exports.findAll = function (req, res) {
 
 
     function getBook(book_id) {
-        request('http://hezuo.kanshu.cn/newoffer/getchapterlist.php?cono=100530&bookid=' + parseInt(book_id, 0) + '&chapternum=' + 10 + '', function (error, response, body) {
+        request('http://hezuo.kanshu.cn/newoffer/getchapterlist.php?cono=100530&bookid=' + parseInt(book_id, 0) + '&chapternum=' + 0 + '', function (error, response, body) {
 
             if (!error && response.statusCode == 200) {
 
