@@ -59,7 +59,7 @@ module.exports.findAll = function (req, res) {
             if (!error && response.statusCode == 200) {
 
                 xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
-                    console.log(result);
+                    console.log(result.chapters.chapter.chapterid, result.chapters.chapter.content);
                     // _.map(result.chapters.chapter, function (item) {
                     //     console.log(item.chapterid, item.content);
                     // })
