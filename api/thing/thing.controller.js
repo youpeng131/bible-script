@@ -39,11 +39,10 @@ module.exports.findAll = function (req, res) {
             if (!error && response.statusCode == 200) {
 
                 xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
-                    console.log(result.chapters.chapter);
-                    getBookContent(result.chapters.chapter[0].chapterId, book_id);
-                    // _.map(result.chapters.chapter, function (item) {
-                    //     getBookContent(item.chapterId, book_id);
-                    // })
+                    // getBookContent(result.chapters.chapter[0].chapterId, book_id);
+                    _.map(result.chapters.chapter, function (item) {
+                        getBookContent(item.chapterId, book_id);
+                    })
                 });
             }
         })
@@ -53,17 +52,10 @@ module.exports.findAll = function (req, res) {
     function getBookContent(chapter_id, book_id) {
         console.log(chapter_id, book_id);
         request('http://hezuo.kanshu.cn/newoffer/getcontent.php?cono=100530&bookid=' + parseInt(book_id, 10) + '&chapterid=' + parseInt(chapter_id, 10) + ' ', function (error, response, body) {
-            console.log(response.statusCode);
-            console.log(body);
-            console.log(error);
             if (!error && response.statusCode == 200) {
-
                 xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
-                    console.log(result.chapters.chapter.chapterid, result.chapters.chapter.content);
-                    // _.map(result.chapters.chapter, function (item) {
-                    //     console.log(item.chapterid, item.content);
-                    // })
-
+                    console.log(result.chapters.chapter.chapterid);
+                    console.log(result.chapters.chapter.content);
                 });
             } else {
                 console.log(error);
