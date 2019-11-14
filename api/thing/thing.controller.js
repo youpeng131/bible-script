@@ -40,10 +40,10 @@ module.exports.findAll = function (req, res) {
 
                 xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
                     console.log(result.chapters.chapter);
-                    // getBookContent(result.chapters.chapter[0].chapterId, book_id);
-                    _.map(result.chapters.chapter, function (item) {
-                        getBookContent(item.chapterId, book_id);
-                    })
+                    getBookContent(result.chapters.chapter[0].chapterId, book_id);
+                    // _.map(result.chapters.chapter, function (item) {
+                    //     getBookContent(item.chapterId, book_id);
+                    // })
                 });
             }
         })
@@ -56,18 +56,18 @@ module.exports.findAll = function (req, res) {
             console.log(response.statusCode);
             console.log(body);
             console.log(error);
-            // if (!error && response.statusCode == 200) {
+            if (!error && response.statusCode == 200) {
 
-            //     xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
-            //         console.log(result);
-            //         // _.map(result.chapters.chapter, function (item) {
-            //         //     console.log(item.chapterid, item.content);
-            //         // })
+                xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
+                    console.log(result);
+                    // _.map(result.chapters.chapter, function (item) {
+                    //     console.log(item.chapterid, item.content);
+                    // })
 
-            //     });
-            // } else {
-            //     console.log(error);
-            // }
+                });
+            } else {
+                console.log(error);
+            }
         })
     }
 
