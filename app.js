@@ -27,6 +27,11 @@ app.use("/:url(api|views)/*", function (req, res) {
     res.sendFile(path + "404.html");
 });
 
+process.on('uncaughtException', function (err) {
+    console.error(err.stack);
+    console.log('Node NOT Exiting ...');
+});
+
 app.listen(8083, function () {
     console.log('Example app listening on port 8083!')
 });
