@@ -22,6 +22,7 @@ module.exports.findAll = function (req, res) {
 
         if (!error && response.statusCode == 200) {
             xml2js(body, { explicitArray: false, ignoreAttrs: true }, function (err, result) {
+                console.log(result);
                 getBook(result.books.book[0].id);
                 // _.map(result.books.book, function (item) {
                 //     getBook(item.id);
