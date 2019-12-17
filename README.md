@@ -3,4 +3,4 @@
 2. cd bible-script
 3. npm install 
 4. node app.js
-5.在浏览器输入 http://localhost:8083/api/thing
+5. 在浏览器输入 http://localhost:8083/api/thing
