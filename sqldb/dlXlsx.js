@@ -16,7 +16,7 @@ const dlXlsx = (data) => {
         }
     };
     // 将workBook写入文件
-    XLSX.writeFile(workBook, './sqldb/霸仙绝杀.xlsx');
+    XLSX.writeFile(workBook, './sqldb/shenkongtianxia.xlsx');
 
 }
 
